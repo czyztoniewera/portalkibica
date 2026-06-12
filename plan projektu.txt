@@ -1,0 +1,84 @@
+📋 Plan projektu – wszystkie kroki
+ETAP 1 – Projekt + GitHub ✅
+
+1.1 Tworzenie nowego projektu
+1.2 Konfiguracja projektu
+1.3 Informacje dodatkowe
+1.4 Sprawdzenie struktury
+1.5 Połączenie z GitHub
+
+ETAP 2 – Baza danych ✅
+
+2.1 Instalacja pakietów NuGet
+2.2 Tworzenie modeli (News, Player, Match)
+2.3 Tworzenie ApplicationDbContext
+2.4 Konfiguracja connection string w appsettings.json
+2.5 Rejestracja DbContext w Program.cs
+2.6 Migracje EF Core (Add-Migration, Update-Database)
+
+ETAP 3 – Logowanie admina ✅
+
+3.1 Seed konta administratora w Program.cs
+3.2 Scaffolding stron Identity (Login, Logout)
+3.3 Sprawdzenie Program.cs
+3.4 Test logowania
+
+ETAP 4 – Panel admin CRUD ⏳
+
+4.1 Tworzenie folderów Controllers/Admin i Views/Admin ✅
+4.2 Tworzenie NewsController.cs ✅
+4.3 Tworzenie widoków News (Index, Create, Edit, Delete) ✅
+4.4 Wklejanie kodu do widoków News ✅
+4.5 Tworzenie PlayersController.cs
+4.6 Tworzenie widoków Players (Index, Create, Edit, Delete)
+4.7 Tworzenie MatchesController.cs
+4.8 Tworzenie widoków Matches (Index, Create, Edit, Delete)
+4.9 Tworzenie AdminController.cs (dashboard)
+4.10 Tworzenie widoku Dashboard
+4.11 Test panelu admina
+4.12 Commit na GitHub
+
+ETAP 5 – Część publiczna ⏳
+
+5.1 Tworzenie publicznego NewsController.cs
+5.2 Widoki publiczne News (Index, Details)
+5.3 Wyszukiwarka newsów
+5.4 Tworzenie publicznego PlayersController.cs
+5.5 Widoki publiczne Players (Index, Details)
+5.6 Tworzenie publicznego MatchesController.cs
+5.7 Widok publiczny Matches (Index)
+5.8 Aktualizacja strony głównej HomeController
+5.9 Commit na GitHub
+
+ETAP 6 – Wygląd Bootstrap ⏳
+
+6.1 Aktualizacja głównego layoutu (_Layout.cshtml)
+6.2 Navbar w barwach Wisły (czerwono-biały)
+6.3 Footer
+6.4 Customowy CSS (wwwroot/css/site.css)
+6.5 Responsywność RWD – testy
+6.6 Commit na GitHub
+
+ETAP 7 – System ulubionych ⏳
+
+7.1 Model UserFavorite
+7.2 Migracja EF Core
+7.3 FavoritesController
+7.4 Przyciski "Obserwuj" przy newsach i zawodnikach
+7.5 Spersonalizowana strona główna
+7.6 Commit na GitHub
+
+ETAP 8 – Seed danych + testy ⏳
+
+8.1 Seed przykładowych newsów
+8.2 Seed zawodników Wisły
+8.3 Seed meczów
+8.4 Test wszystkich funkcji
+8.5 Commit na GitHub
+
+ETAP 9 – Dokumentacja ⏳
+
+9.1 Plik README.md na GitHub
+9.2 Dokumentacja techniczna
+9.3 Instrukcja użytkownika
+9.4 Finalny commit i push

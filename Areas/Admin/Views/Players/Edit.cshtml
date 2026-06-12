@@ -1,0 +1,63 @@
+@model PortalKibica.Models.Player
+
+@{
+    ViewData["Title"] = "Edytuj Zawodnika";
+}
+
+<div class="container mt-4">
+    <h2>✏️ Edytuj Zawodnika</h2>
+    <hr />
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImagePath" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Position" class="form-label"></label>
+            <select asp-for="Position" class="form-select">
+                <option value="">-- Wybierz pozycję --</option>
+                <option value="Bramkarz">Bramkarz</option>
+                <option value="Obrońca">Obrońca</option>
+                <option value="Pomocnik">Pomocnik</option>
+                <option value="Napastnik">Napastnik</option>
+            </select>
+            <span asp-validation-for="Position" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Number" class="form-label"></label>
+            <input asp-for="Number" class="form-control" type="number" min="1" max="99" />
+            <span asp-validation-for="Number" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Aktualne zdjęcie</label><br />
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" width="80" class="mb-2" /><br />
+            }
+            <label class="form-label">Zmień zdjęcie</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">💾 Zapisz zmiany</button>
+        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

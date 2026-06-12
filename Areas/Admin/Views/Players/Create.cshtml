@@ -1,0 +1,53 @@
+@model PortalKibica.Models.Player
+
+@{
+    ViewData["Title"] = "Dodaj Zawodnika";
+}
+
+<div class="container mt-4">
+    <h2>⚽ Dodaj Zawodnika</h2>
+    <hr />
+
+    <form action="/Admin/Players/Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label for="Name" class="form-label">Imię i nazwisko</label>
+            <input type="text" id="Name" name="Name" class="form-control" placeholder="Imię i nazwisko" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Position" class="form-label">Pozycja</label>
+            <select id="Position" name="Position" class="form-select">
+                <option value="">-- Wybierz pozycję --</option>
+                <option value="Bramkarz">Bramkarz</option>
+                <option value="Obrońca">Obrońca</option>
+                <option value="Pomocnik">Pomocnik</option>
+                <option value="Napastnik">Napastnik</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="Number" class="form-label">Numer</label>
+            <input type="number" id="Number" name="Number" class="form-control" min="1" max="99" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Opis</label>
+            <textarea id="Description" name="Description" class="form-control" rows="4" placeholder="Opis zawodnika"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Zdjęcie</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 Zapisz</button>
+        <a href="/Admin/Players" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

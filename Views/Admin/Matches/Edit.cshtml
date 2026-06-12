@@ -1,0 +1,47 @@
+@model PortalKibica.Models.Match
+
+@{
+    ViewData["Title"] = "Edytuj Mecz";
+}
+
+<div class="container mt-4">
+    <h2>✏️ Edytuj Mecz</h2>
+    <hr />
+
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Opponent" class="form-label">Rywal</label>
+            <input asp-for="Opponent" class="form-control" placeholder="Nazwa drużyny rywala" />
+            <span asp-validation-for="Opponent" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MatchDate" class="form-label">Data meczu</label>
+            <input asp-for="MatchDate" type="datetime-local" class="form-control" />
+            <span asp-validation-for="MatchDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Stadium" class="form-label">Stadion</label>
+            <input asp-for="Stadium" class="form-control" placeholder="Nazwa stadionu" />
+            <span asp-validation-for="Stadium" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Result" class="form-label">Wynik (opcjonalnie)</label>
+            <input asp-for="Result" class="form-control" placeholder="np. 2:1" />
+            <span asp-validation-for="Result" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">💾 Zapisz zmiany</button>
+        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

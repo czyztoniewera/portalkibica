@@ -1,0 +1,34 @@
+@model PortalKibica.Models.News
+
+@{
+    ViewData["Title"] = "Dodaj News";
+}
+
+<div class="container mt-4">
+    <h2>📰 Dodaj News</h2>
+    <hr />
+
+    <form action="/Admin/News/Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label for="Title" class="form-label">Tytuł</label>
+            <input type="text" id="Title" name="Title" class="form-control" placeholder="Wpisz tytuł newsa" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Content" class="form-label">Treść</label>
+            <textarea id="Content" name="Content" class="form-control" rows="8" placeholder="Wpisz treść newsa"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Zdjęcie (opcjonalne)</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 Zapisz</button>
+        <a href="/Admin/News" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>
