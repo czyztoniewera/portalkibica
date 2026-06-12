@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Admin\News\" />
+    <Folder Include="Views\News\" />
   </ItemGroup>
 
 </Project>

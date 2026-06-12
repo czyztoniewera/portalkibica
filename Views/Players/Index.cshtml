@@ -1,0 +1,44 @@
+@model IEnumerable<PortalKibica.Models.Player>
+
+@{
+    ViewData["Title"] = "Zawodnicy";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">⚽ Skład zespołu</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Brak zawodników do wyświetlenia.</div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 text-center">
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="@item.ImagePath" class="card-img-top" style="height:220px; object-fit:cover;" alt="@item.Name" />
+                        }
+                        else
+                        {
+                            <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height:220px;">
+                                Brak zdjęcia
+                            </div>
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">@item.Name</h5>
+                            <p class="card-text text-muted mb-1">@item.Position</p>
+                            <span class="badge bg-danger fs-6">#@item.Number</span>
+                            <div class="mt-2">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Zobacz profil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

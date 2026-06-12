@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PortalKibica.Data;
 using PortalKibica.Models;
 
 namespace PortalKibica.Controllers
@@ -7,14 +9,29 @@ namespace PortalKibica.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var latestNews = await _context.News
+                .OrderByDescending(n => n.PublishDate)
+                .Take(3)
+                .ToListAsync();
+
+            var nextMatch = await _context.Matches
+                .Where(m => m.MatchDate >= DateTime.Now)
+                .OrderBy(m => m.MatchDate)
+                .FirstOrDefaultAsync();
+
+            ViewData["LatestNews"] = latestNews;
+            ViewData["NextMatch"] = nextMatch;
+
             return View();
         }
 
