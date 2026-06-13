@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h2>✏️ Edytuj Mecz</h2>
+    <h2>Edytuj Mecz</h2>
     <hr />
 
     <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
@@ -35,7 +35,7 @@
             <span asp-validation-for="Result" class="text-danger"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary">💾 Zapisz zmiany</button>
+        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
         <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
     </form>
 </div>

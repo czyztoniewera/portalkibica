@@ -7,68 +7,71 @@
     var past = Model.Where(m => m.MatchDate < now).OrderByDescending(m => m.MatchDate).ToList();
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4">📅 Terminarz meczów</h2>
+<h2 class="page-title">Terminarz meczów</h2>
+<div class="stripe-bar">
+    <span class="stripe-blue"></span>
+    <span class="stripe-white"></span>
+    <span class="stripe-red"></span>
+</div>
 
-    <h4 class="mb-3">Najbliższe mecze</h4>
-    @if (!upcoming.Any())
-    {
-        <div class="alert alert-info">Brak zaplanowanych meczów.</div>
-    }
-    else
-    {
-        <div class="row mb-5">
-            @foreach (var item in upcoming)
-            {
-                <div class="col-md-4 mb-3">
-                    <div class="card border-danger">
-                        <div class="card-body">
-                            <h5 class="card-title">Wisła Kraków vs @item.Opponent</h5>
-                            <p class="card-text mb-1">📍 @item.Stadium</p>
-                            <p class="card-text text-muted">🕒 @item.MatchDate.ToString("dd.MM.yyyy HH:mm")</p>
-                        </div>
+<h4 class="mb-3">Najbliższe mecze</h4>
+@if (!upcoming.Any())
+{
+    <div class="alert alert-info mb-5">Brak zaplanowanych meczów.</div>
+}
+else
+{
+    <div class="row mb-5">
+        @foreach (var item in upcoming)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card card-hover border-danger h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Wisła Kraków &ndash; @item.Opponent</h5>
+                        <p class="card-text mb-1">@item.Stadium</p>
+                        <p class="card-text text-muted">@item.MatchDate.ToString("dd.MM.yyyy HH:mm")</p>
                     </div>
                 </div>
-            }
-        </div>
-    }
+            </div>
+        }
+    </div>
+}
 
-    <h4 class="mb-3">Rozegrane mecze</h4>
-    @if (!past.Any())
-    {
-        <div class="alert alert-info">Brak rozegranych meczów.</div>
-    }
-    else
-    {
-        <table class="table table-striped table-hover">
-            <thead class="table-dark">
+<h4 class="mb-3">Rozegrane mecze</h4>
+@if (!past.Any())
+{
+    <div class="alert alert-info">Brak rozegranych meczów.</div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Rywal</th>
+                <th>Data</th>
+                <th>Stadion</th>
+                <th>Wynik</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in past)
+            {
                 <tr>
-                    <th>Rywal</th>
-                    <th>Data</th>
-                    <th>Stadion</th>
-                    <th>Wynik</th>
+                    <td>@item.Opponent</td>
+                    <td>@item.MatchDate.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@item.Stadium</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.Result))
+                        {
+                            <span class="badge bg-dark">@item.Result</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Brak wyniku</span>
+                        }
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in past)
-                {
-                    <tr>
-                        <td>@item.Opponent</td>
-                        <td>@item.MatchDate.ToString("dd.MM.yyyy HH:mm")</td>
-                        <td>@item.Stadium</td>
-                        <td>
-                            @if (!string.IsNullOrEmpty(item.Result))
-                            {
-                                <span class="badge bg-dark">@item.Result</span>
-                            }
-                            else
-                            {
-                                <span class="text-muted">Brak wyniku</span>
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-</div>
+            }
+        </tbody>
+    </table>
+}

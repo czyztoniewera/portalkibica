@@ -3,7 +3,7 @@
 }
 
 <div class="container mt-4">
-    <h2>⚙️ Panel Administracyjny</h2>
+    <h2>Panel Administracyjny</h2>
     <p class="text-muted">Witaj w panelu administracyjnym Portalu Kibica Wisły Kraków</p>
     <hr />
 
@@ -12,10 +12,10 @@
             <div class="card text-white bg-danger">
                 <div class="card-body text-center">
                     <h1 class="display-4">@ViewBag.NewsCount</h1>
-                    <h5>📰 Aktualności</h5>
+                    <h5>Aktualności</h5>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-controller="News" asp-action="Index" asp-area=""
+                    <a asp-controller="News" asp-action="Index" asp-area="Admin"
                        class="text-white">Zarządzaj →</a>
                 </div>
             </div>
@@ -25,10 +25,10 @@
             <div class="card text-white bg-dark">
                 <div class="card-body text-center">
                     <h1 class="display-4">@ViewBag.PlayersCount</h1>
-                    <h5>⚽ Zawodnicy</h5>
+                    <h5>Zawodnicy</h5>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-controller="Players" asp-action="Index" asp-area=""
+                    <a asp-controller="Players" asp-action="Index" asp-area="Admin"
                        class="text-white">Zarządzaj →</a>
                 </div>
             </div>
@@ -38,10 +38,10 @@
             <div class="card text-white bg-secondary">
                 <div class="card-body text-center">
                     <h1 class="display-4">@ViewBag.MatchesCount</h1>
-                    <h5>🏟️ Mecze</h5>
+                    <h5>Mecze</h5>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-controller="Matches" asp-action="Index" asp-area=""
+                    <a asp-controller="Matches" asp-action="Index" asp-area="Admin"
                        class="text-white">Zarządzaj →</a>
                 </div>
             </div>
@@ -50,15 +50,15 @@
 
     <div class="row mt-2">
         <div class="col-md-4">
-            <a asp-controller="News" asp-action="Create" asp-area=""
+            <a asp-controller="News" asp-action="Create" asp-area="Admin"
                class="btn btn-outline-danger w-100 mb-2">+ Dodaj aktualność</a>
         </div>
         <div class="col-md-4">
-            <a asp-controller="Players" asp-action="Create" asp-area=""
+            <a asp-controller="Players" asp-action="Create" asp-area="Admin"
                class="btn btn-outline-dark w-100 mb-2">+ Dodaj zawodnika</a>
         </div>
         <div class="col-md-4">
-            <a asp-controller="Matches" asp-action="Create" asp-area=""
+            <a asp-controller="Matches" asp-action="Create" asp-area="Admin"
                class="btn btn-outline-secondary w-100 mb-2">+ Dodaj mecz</a>
         </div>
     </div>

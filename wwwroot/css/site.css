@@ -1,22 +1,220 @@
+:root {
+    --wisla-blue: #1e3a8a;
+    --wisla-blue-dark: #142a63;
+    --wisla-red: #d41a25;
+    --wisla-red-dark: #a30d26;
+    --wisla-white: #ffffff;
+    --wisla-bg-light: #f4f6fa;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--wisla-bg-light);
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--wisla-blue);
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* navbar */
+.wisla-navbar {
+    background-color: var(--wisla-red);
+    border-bottom: 4px solid var(--wisla-blue);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+    .wisla-navbar .navbar-brand {
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: var(--wisla-white);
+        letter-spacing: 0.5px;
+    }
+
+    .wisla-navbar .navbar-brand-year {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #ffd9dc;
+        margin-left: 0.4rem;
+    }
+
+    .wisla-navbar .nav-link {
+        color: #ffe5e7 !important;
+        font-weight: 500;
+    }
+
+        .wisla-navbar .nav-link:hover {
+            color: var(--wisla-white) !important;
+        }
+
+        .wisla-navbar .nav-link.active {
+            color: var(--wisla-white) !important;
+            border-bottom: 2px solid var(--wisla-white);
+        }
+
+/* footer */
+.wisla-footer {
+    background-color: var(--wisla-red);
+    color: #dfe6f7;
+    border-top: 4px solid var(--wisla-blue);
+}
+
+    .wisla-footer a {
+        color: var(--wisla-white);
+        text-decoration: underline;
+    }
+
+/* pasek w barwach klubu */
+.stripe-bar {
+    display: flex;
+    height: 5px;
+    width: 90px;
+    margin: 0.6rem 0 1.5rem;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid #dfe1e6;
+}
+
+    .stripe-bar.stripe-bar-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .stripe-bar span {
+        flex: 1;
+    }
+
+.stripe-blue {
+    background-color: var(--wisla-blue);
+}
+
+.stripe-white {
+    background-color: var(--wisla-white);
+}
+
+.stripe-red {
+    background-color: var(--wisla-red);
+}
+
+/* tytuly sekcji */
+.page-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* hero na stronie glownej */
+.hero {
+    background-color: transparent;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+    .hero h1 {
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #1a1a1a;
+    }
+
+    .hero p {
+        color: #555;
+        margin-bottom: 0;
+    }
+
+/* karty z efektem hover */
+.card-hover {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+    .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+    }
+
+/* przyciski */
+.btn-primary {
+    background-color: var(--wisla-blue);
+    border-color: var(--wisla-blue);
+}
+
+    .btn-primary:hover {
+        background-color: var(--wisla-blue-dark);
+        border-color: var(--wisla-blue-dark);
+    }
+
+.btn-danger {
+    background-color: var(--wisla-red);
+    border-color: var(--wisla-red);
+}
+
+    .btn-danger:hover {
+        background-color: var(--wisla-red-dark);
+        border-color: var(--wisla-red-dark);
+    }
+
+.btn-outline-primary {
+    color: var(--wisla-blue);
+    border-color: var(--wisla-blue);
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--wisla-blue);
+        border-color: var(--wisla-blue);
+        color: var(--wisla-white);
+    }
+
+.btn-outline-danger {
+    color: var(--wisla-red);
+    border-color: var(--wisla-red);
+}
+
+    .btn-outline-danger:hover {
+        background-color: var(--wisla-red);
+        border-color: var(--wisla-red);
+        color: var(--wisla-white);
+    }
+
+/* filtry pozycji zawodnikow */
+.position-filter .btn {
+    border-radius: 1.5rem;
+    margin: 0 0.25rem 0.5rem 0;
+}
+
+/* naglowek grupy zawodnikow wedlug pozycji */
+.position-group-title {
+    font-weight: 700;
+    color: var(--wisla-blue);
+    border-bottom: 2px solid var(--wisla-red);
+    display: inline-block;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+/* karty meczu */
+.card.border-danger {
+    border-color: var(--wisla-red) !important;
+}
+
+/* naglowki tabel */
+.table-dark {
+    background-color: var(--wisla-blue);
 }

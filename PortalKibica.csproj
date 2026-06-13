@@ -17,7 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Shared\" />
     <Folder Include="Views\Admin\News\" />
+    <Folder Include="Views\Matches\" />
+    <Folder Include="Views\Players\" />
     <Folder Include="Views\News\" />
   </ItemGroup>
 

@@ -14,16 +14,31 @@ namespace PortalKibica.Controllers
             _context = context;
         }
 
-        // Lista zawodników (publiczna)
-        public async Task<IActionResult> Index()
+        // Lista zawodnikow (publiczna) z opcjonalnym filtrem pozycji
+        public async Task<IActionResult> Index(string? position)
         {
-            var players = await _context.Players
-                .OrderBy(p => p.Number)
+            var playersQuery = _context.Players.OrderBy(p => p.Number).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(position))
+            {
+                playersQuery = playersQuery.Where(p => p.Position == position);
+            }
+
+            var players = await playersQuery.ToListAsync();
+
+            var allPositions = await _context.Players
+                .Select(p => p.Position)
+                .Distinct()
+                .OrderBy(p => p)
                 .ToListAsync();
+
+            ViewData["AllPositions"] = allPositions;
+            ViewData["SelectedPosition"] = position;
+
             return View(players);
         }
 
-        // Szczegóły zawodnika
+        // Szczegoly zawodnika
         public async Task<IActionResult> Details(int id)
         {
             var player = await _context.Players.FindAsync(id);

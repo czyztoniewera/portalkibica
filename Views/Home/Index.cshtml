@@ -4,8 +4,13 @@
     var latestNews = ViewData["LatestNews"] as List<PortalKibica.Models.News>;
 }
 
-<div class="text-center mb-5">
-    <h1 class="display-4">⚪🔴 Witamy w Portalu Kibica Wisły Kraków</h1>
+<div class="hero">
+    <h1 class="display-5">Portal Kibica Wisły Kraków</h1>
+    <div class="stripe-bar stripe-bar-center">
+        <span class="stripe-blue"></span>
+        <span class="stripe-white"></span>
+        <span class="stripe-red"></span>
+    </div>
     <p class="lead">Najświeższe newsy, skład zespołu i terminarz meczów w jednym miejscu.</p>
 </div>
 
@@ -13,23 +18,28 @@
 {
     <div class="card border-danger mb-5 mx-auto" style="max-width: 600px;">
         <div class="card-body text-center">
-            <h4 class="card-title">⏳ Najbliższy mecz</h4>
-            <h3 class="mb-2">Wisła Kraków vs @nextMatch.Opponent</h3>
-            <p class="mb-1">📍 @nextMatch.Stadium</p>
-            <p class="text-muted">🕒 @nextMatch.MatchDate.ToString("dd.MM.yyyy HH:mm")</p>
+            <h4 class="card-title">Najbliższy mecz</h4>
+            <h3 class="mb-2">Wisła Kraków &ndash; @nextMatch.Opponent</h3>
+            <p class="mb-1">@nextMatch.Stadium</p>
+            <p class="text-muted">@nextMatch.MatchDate.ToString("dd.MM.yyyy, HH:mm")</p>
             <a asp-controller="Matches" asp-action="Index" class="btn btn-outline-danger mt-2">Zobacz terminarz</a>
         </div>
     </div>
 }
 else
 {
-    <div class="alert alert-info text-center mx-auto" style="max-width: 600px;">
+    <div class="alert alert-info text-center mx-auto mb-5" style="max-width: 600px;">
         Brak zaplanowanych meczów.
         <a asp-controller="Matches" asp-action="Index" class="btn btn-sm btn-outline-primary ms-2">Terminarz</a>
     </div>
 }
 
-<h2 class="mb-4">📰 Najnowsze aktualności</h2>
+<h2 class="page-title">Najnowsze aktualności</h2>
+<div class="stripe-bar">
+    <span class="stripe-blue"></span>
+    <span class="stripe-white"></span>
+    <span class="stripe-red"></span>
+</div>
 
 @if (latestNews == null || !latestNews.Any())
 {
@@ -41,7 +51,7 @@ else
         @foreach (var item in latestNews)
         {
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
+                <div class="card card-hover h-100">
                     @if (!string.IsNullOrEmpty(item.ImagePath))
                     {
                         <img src="@item.ImagePath" class="card-img-top" style="height:180px; object-fit:cover;" alt="@item.Title" />

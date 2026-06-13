@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h2>🗑️ Usuń Mecz</h2>
+    <h2>Usuń Mecz</h2>
     <hr />
 
     <div class="alert alert-danger">
@@ -24,7 +24,7 @@
     </dl>
 
     <form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post">
-        <button type="submit" class="btn btn-danger">🗑️ Tak, usuń</button>
+        <button type="submit" class="btn btn-danger">Tak, usuń</button>
         <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
     </form>
 </div>

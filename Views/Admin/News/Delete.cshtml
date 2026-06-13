@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h2>🗑️ Usuń News</h2>
+    <h2>Usuń News</h2>
     <hr />
 
     <div class="alert alert-danger">
@@ -22,7 +22,7 @@
 
     <form asp-action="DeleteConfirmed" method="post">
         <input type="hidden" asp-for="Id" />
-        <button type="submit" class="btn btn-danger">🗑️ Tak, usuń</button>
+        <button type="submit" class="btn btn-danger">Tak, usuń</button>
         <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
     </form>
 </div>

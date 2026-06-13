@@ -2,22 +2,39 @@
 
 @{
     ViewData["Title"] = "Zawodnicy";
+    var allPositions = ViewData["AllPositions"] as List<string> ?? new List<string>();
+    var selectedPosition = ViewData["SelectedPosition"] as string;
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4">⚽ Skład zespołu</h2>
+<h2 class="page-title">Skład zespołu</h2>
+<div class="stripe-bar">
+    <span class="stripe-blue"></span>
+    <span class="stripe-white"></span>
+    <span class="stripe-red"></span>
+</div>
 
-    @if (!Model.Any())
+<div class="position-filter mb-4">
+    <a asp-action="Index" class="btn btn-sm @(selectedPosition == null ? "btn-primary" : "btn-outline-primary")">Wszyscy</a>
+    @foreach (var pos in allPositions)
     {
-        <div class="alert alert-info">Brak zawodników do wyświetlenia.</div>
+        <a asp-action="Index" asp-route-position="@pos" class="btn btn-sm @(selectedPosition == pos ? "btn-primary" : "btn-outline-primary")">@pos</a>
     }
-    else
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Brak zawodników do wyświetlenia.</div>
+}
+else
+{
+    @foreach (var group in Model.GroupBy(p => p.Position))
     {
-        <div class="row">
-            @foreach (var item in Model)
+        <h4 class="position-group-title">@group.Key</h4>
+        <div class="row mb-4">
+            @foreach (var item in group)
             {
                 <div class="col-md-3 mb-4">
-                    <div class="card h-100 text-center">
+                    <div class="card card-hover h-100 text-center">
                         @if (!string.IsNullOrEmpty(item.ImagePath))
                         {
                             <img src="@item.ImagePath" class="card-img-top" style="height:220px; object-fit:cover;" alt="@item.Name" />
@@ -41,4 +58,4 @@
             }
         </div>
     }
-</div>
+}
