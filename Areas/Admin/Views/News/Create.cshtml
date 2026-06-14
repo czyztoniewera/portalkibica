@@ -18,9 +18,10 @@
         </div>
 
         <div class="mb-3">
-            <label for="Content" class="form-label">Treść</label>
-            <textarea id="Content" name="Content" class="form-control" rows="8" placeholder="Wpisz treść newsa"></textarea>
+            <label asp-for="Content" class="form-label"></label>
+            <textarea asp-for="Content" class="form-control" rows="8" id="newsContent"></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
+            <div class="form-text text-end" id="charCount">0 znaków</div>
         </div>
 
         <div class="mb-3">
@@ -32,3 +33,17 @@
         <a href="/Admin/News" class="btn btn-secondary">Anuluj</a>
     </form>
 </div>
+
+@section Scripts {
+    <script>
+        const newsContent = document.getElementById("newsContent");
+        const charCount = document.getElementById("charCount");
+
+        function updateCharCount() {
+            charCount.textContent = newsContent.value.length + " znaków";
+        }
+
+        newsContent.addEventListener("input", updateCharCount);
+        updateCharCount();
+    </script>
+}

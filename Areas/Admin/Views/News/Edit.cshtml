@@ -21,8 +21,9 @@
 
         <div class="mb-3">
             <label asp-for="Content" class="form-label"></label>
-            <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+            <textarea asp-for="Content" class="form-control" rows="8" id="newsContent"></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
+            <div class="form-text text-end" id="charCount">0 znaków</div>
         </div>
 
         <div class="mb-3">
@@ -44,4 +45,15 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        const newsContent = document.getElementById("newsContent");
+        const charCount = document.getElementById("charCount");
+
+        function updateCharCount() {
+            charCount.textContent = newsContent.value.length + " znaków";
+        }
+
+        newsContent.addEventListener("input", updateCharCount);
+        updateCharCount();
+    </script>
 }
